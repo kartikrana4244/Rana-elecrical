@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Rana Electrical</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="page active">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <h1>🔌 Rana Electrical</h1>
+                    <h2>Admin Dashboard</h2>
+                </div>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="admin@ranaelectrical.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="Enter password">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    <div id="loginError" class="error-message"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboardPage" class="page">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>🔌 Rana Electrical</h2>
+                <p>Admin Panel</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-page="dashboard">
+                    <span>📊</span> Dashboard
+                </a>
+                <a href="#" class="nav-item" data-page="services">
+                    <span>⚙️</span> Manage Services
+                </a>
+                <a href="#" class="nav-item" data-page="addService">
+                    <span>➕</span> Add New Service
+                </a>
+                <a href="#" class="nav-item" id="logoutBtn">
+                    <span>🚪</span> Logout
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <div class="search-container">
+                    <input type="text" id="globalSearch" placeholder="Search services..." class="search-input">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <div class="user-info">
+                    <span id="adminName">Admin</span>
+                </div>
+            </header>
+
+            <!-- Dashboard Home -->
+            <div id="dashboardHome" class="content-section active">
+                <div class="page-header">
+                    <h1>Dashboard Overview</h1>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📋</div>
+                        <div class="stat-info">
+                            <h3 id="totalServices">0</h3>
+                            <p>Total Services</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <h3 id="availableServices">0</h3>
+                            <p>Available Services</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">❌</div>
+                        <div class="stat-info">
+                            <h3 id="unavailableServices">0</h3>
+                            <p>Unavailable Services</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📁</div>
+                        <div class="stat-info">
+                            <h3 id="totalCategories">0</h3>
+                            <p>Categories</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manage Services -->
+            <div id="servicesPage" class="content-section">
+                <div class="page-header">
+                    <h1>Manage Services</h1>
+                    <button class="btn btn-primary" onclick="showPage('addService')">➕ Add New Service</button>
+                </div>
+                <div class="services-table-container">
+                    <table class="services-table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Service Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="servicesTableBody">
+                            <tr>
+                                <td colspan="6" class="loading">Loading services...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Add/Edit Service -->
+            <div id="addServicePage" class="content-section">
+                <div class="page-header">
+                    <h1 id="serviceFormTitle">Add New Service</h1>
+                    <button class="btn btn-secondary" onclick="showPage('services')">← Back to Services</button>
+                </div>
+                <form id="serviceForm" class="service-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="serviceName">Service Name *</label>
+                            <input type="text" id="serviceName" name="name" required placeholder="e.g., AC Repair">
+                        </div>
+                        <div class="form-group">
+                            <label for="serviceCategory">Category *</label>
+                            <select id="serviceCategory" name="category" required>
+                                <option value="">Select Category</option>
+                                <option value="AC Repair">AC Repair</option>
+                                <option value="AC Installation">AC Installation</option>
+                                <option value="AC Gas Refilling">AC Gas Refilling</option>
+                                <option value="AC Maintenance">AC Maintenance</option>
+                                <option value="Electrical">Electrical</option>
+                                <option value="Wiring">Wiring</option>
+                                <option value="Fan Repair">Fan Repair</option>
+                                <option value="Inverter Service">Inverter Service</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="serviceDescription">Description *</label>
+                        <textarea id="serviceDescription" name="description" rows="4" required placeholder="Service description..."></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="servicePrice">Price</label>
+                            <input type="text" id="servicePrice" name="price" placeholder="e.g., ₹500 or Contact for pricing">
+                        </div>
+                        <div class="form-group">
+                            <label for="serviceStatus">Status</label>
+                            <select id="serviceStatus" name="status">
+                                <option value="available">Available</option>
+                                <option value="unavailable">Not Available</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="serviceKeywords">Keywords (comma separated)</label>
+                        <input type="text" id="serviceKeywords" name="keywords" placeholder="e.g., ac repair, air conditioner, cooling">
+                    </div>
+                    <div class="form-group">
+                        <label for="serviceImage">Service Image</label>
+                        <input type="file" id="serviceImage" name="image" accept="image/*">
+                        <div id="imagePreview" class="image-preview"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Features (one per line)</label>
+                        <textarea id="serviceFeatures" name="features" rows="3" placeholder="Feature 1&#10;Feature 2&#10;Feature 3"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save Service</button>
+                        <button type="button" class="btn btn-secondary" onclick="resetServiceForm()">Reset</button>
+                    </div>
+                    <div id="serviceFormError" class="error-message"></div>
+                    <div id="serviceFormSuccess" class="success-message"></div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
