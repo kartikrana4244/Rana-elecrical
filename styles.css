@@ -180,35 +180,6 @@ img {
     color: var(--primary);
 }
 
-/* Admin Login Button */
-.admin-login-btn {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: white !important;
-    padding: 0.5rem 1rem !important;
-    border-radius: 8px;
-    font-weight: 600 !important;
-    box-shadow: 0 2px 8px rgba(11, 94, 215, 0.3);
-    transition: var(--transition);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.admin-login-btn::after {
-    display: none !important;
-}
-
-.admin-login-btn:hover {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(11, 94, 215, 0.4);
-    color: white !important;
-}
-
-.admin-login-btn i {
-    font-size: 0.9rem;
-}
-
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;
@@ -3735,14 +3706,6 @@ body.service-modal-open {
     
     .nav-menu a::after {
         display: none;
-    }
-    
-    /* Admin Login Button - Mobile */
-    .admin-login-btn {
-        margin: 0.5rem auto;
-        display: inline-flex;
-        width: auto;
-        justify-content: center;
     }
 
     /* Hero */

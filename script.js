@@ -10,8 +10,6 @@ window.addEventListener('error', function(e) {
     return true;
 });
 
-// Admin login button now redirects to login.html (no configuration needed)
-
 // ============================================
 // Loading Screen
 // ============================================
