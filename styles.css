@@ -3206,22 +3206,8 @@ body.service-modal-open {
     }
 }
 
-@media (max-width: 992px) {
-    .contact-wrapper {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-md);
-    }
-}
-
-@media (max-width: 992px) {
-    .contact-wrapper {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-md);
-    }
-}
-
 .contact-info h2 {
-    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
     font-weight: 700;
     margin-bottom: var(--spacing-sm);
     color: var(--text);
@@ -3229,16 +3215,16 @@ body.service-modal-open {
 
 .contact-info > p {
     color: var(--text-light);
-    margin-bottom: var(--spacing-lg);
-    font-size: 1.05rem;
+    margin-bottom: var(--spacing-md);
+    font-size: 1rem;
     line-height: 1.8;
 }
 
 .contact-item {
     display: flex;
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-md);
-    padding: var(--spacing-md);
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    padding: var(--spacing-sm);
     background-color: var(--bg-white);
     border-radius: 15px;
     transition: var(--transition);
@@ -3252,30 +3238,30 @@ body.service-modal-open {
 }
 
 .contact-icon-wrapper {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     background: linear-gradient(135deg, var(--primary), var(--primary-light));
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     flex-shrink: 0;
     box-shadow: 0 4px 15px rgba(11, 94, 215, 0.2);
 }
 
 .contact-details h3 {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     color: var(--text);
 }
 
 .contact-details p {
     color: var(--text-light);
     margin-bottom: 0.25rem;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     line-height: 1.6;
 }
 
@@ -3293,20 +3279,20 @@ body.service-modal-open {
 
 .contact-form-wrapper {
     background-color: var(--bg-white);
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
     border-radius: 20px;
     box-shadow: var(--shadow);
 }
 
 .contact-form-wrapper h2 {
-    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
     font-weight: 700;
     margin-bottom: var(--spacing-md);
     color: var(--text);
 }
 
 .form-group {
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
 }
 
 .form-group label {
@@ -3859,6 +3845,16 @@ body.service-modal-open {
     
     .logo h1 {
         font-size: 1.5rem;
+    }
+    
+    /* Footer responsive */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .footer-section {
+        text-align: center;
     }
 }
 

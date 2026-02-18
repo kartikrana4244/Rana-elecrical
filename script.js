@@ -88,44 +88,28 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Get form values
             const name = document.getElementById('name').value.trim();
-            const phone = document.getElementById('phone').value.trim();
             const message = document.getElementById('message').value.trim();
             
             // Basic validation
-            if (!name || !phone || !message) {
+            if (!name || !message) {
                 showFormMessage('Please fill in all required fields.', 'error');
                 return;
             }
             
-            // Phone validation (basic)
-            const phoneRegex = /^[\d\s\-\+\(\)]+$/;
-            if (!phoneRegex.test(phone)) {
-                showFormMessage('Please enter a valid phone number.', 'error');
-                return;
-            }
+            // Construct WhatsApp message
+            const whatsappMessage = encodeURIComponent(`Message from ${name}:\n\n${message}`);
+            const whatsappLink = `https://wa.me/919910818732?text=${whatsappMessage}`;
             
-            // Simulate form submission (in production, this would send to a server)
-            // For now, we'll just show a success message
-            showFormMessage('Thank you for your message! We will contact you soon.', 'success');
+            // Open WhatsApp
+            window.open(whatsappLink, '_blank');
             
-            // Reset form
-            contactForm.reset();
+            // Show success message
+            showFormMessage('WhatsApp opened with your message. Please send it to complete.', 'success');
             
-            // Optional: In production, you would send the data to your server here
-            // Example:
-            // fetch('/api/contact', {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify({ name, phone, message })
-            // })
-            // .then(response => response.json())
-            // .then(data => {
-            //     showFormMessage('Thank you for your message! We will contact you soon.', 'success');
-            //     contactForm.reset();
-            // })
-            // .catch(error => {
-            //     showFormMessage('Sorry, there was an error. Please try again later.', 'error');
-            // });
+            // Reset form after a delay
+            setTimeout(function() {
+                contactForm.reset();
+            }, 2000);
             });
         }
     } catch (error) {
@@ -145,6 +129,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 formMessage.textContent = '';
             }, 5000);
         }
+    }
+    
+    // Pre-fill contact form from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const serviceParam = urlParams.get('service');
+    if (serviceParam && document.getElementById('message')) {
+        const messageTextarea = document.getElementById('message');
+        messageTextarea.value = `I'm interested in ${serviceParam}. Please provide more details.`;
     }
     
     // ============================================
