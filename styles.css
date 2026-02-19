@@ -3651,53 +3651,57 @@ body.service-modal-open {
         height: 300px;
         margin-top: var(--spacing-md);
     }
-    
-    /* Mobile Action Bar */
-    .mobile-action-bar {
-        display: flex;
-        flex-direction: row;
-    }
-    
-    .sticky-call-btn,
-    .whatsapp-btn {
-        display: none;
-    }
-    
-    /* Navigation */
-    .mobile-menu-toggle {
-        display: flex;
-    }
 
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        flex-direction: column;
-        background-color: var(--bg-white);
-        width: 100%;
-        text-align: center;
-        transition: var(--transition);
-        box-shadow: var(--shadow-lg);
-        padding: var(--spacing-lg) 0;
-        gap: 0;
-    }
+    /* Mobile-specific layout rules (scoped) */
+    @media (max-width: 992px) {
+        /* Mobile Action Bar */
+        .mobile-action-bar {
+            display: flex;
+            flex-direction: row;
+        }
 
-    .nav-menu.active {
-        left: 0;
-    }
+        .sticky-call-btn,
+        .whatsapp-btn {
+            display: none;
+        }
 
-    .nav-menu li {
-        padding: 1rem 0;
-    }
-    
-    .nav-menu a::after {
-        display: none;
-    }
+        /* Navigation */
+        .mobile-menu-toggle {
+            display: flex;
+        }
 
-    /* Hero */
-    .hero {
-        min-height: auto;
-        padding: 100px 0 40px;
+        .nav-menu {
+            position: fixed;
+            left: -100%;
+            top: 70px;
+            flex-direction: column;
+            background-color: var(--bg-white);
+            width: 100%;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-lg);
+            padding: var(--spacing-lg) 0;
+            gap: 0;
+            z-index: 1100;
+        }
+
+        .nav-menu.active {
+            left: 0;
+        }
+
+        .nav-menu li {
+            padding: 1rem 0;
+        }
+
+        .nav-menu a::after {
+            display: none;
+        }
+
+        /* Hero adjustments for smaller screens */
+        .hero {
+            min-height: auto;
+            padding: 100px 0 40px;
+        }
     }
 
     .hero-title {
